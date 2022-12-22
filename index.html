@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="./index.js"></script>
+    <b>1. Write one example explaining how you can write a callback function.</b>
+    <pre>
+        function outer(name,sum){
+            console.log(name,sum);
+        }
+            function callBack(a,b){
+                return a + b;
+            }
+            outer("harika",callBack(10,20));
+
+            <b>output:- harika 30</b>
+    </pre>
+     
+    <pre>
+    <b>2. Write a callback function to print numbers from 1 to 7, in which 1 should 
+        be printed after 1 sec, 2 should be printed after 2 sec, 3 should be printed
+         after 3 sec, and so on. 
+
+Explain callback hell.
+Numbers
+1
+2
+3
+4
+5
+6
+7</b>
+</pre>
+
+<pre>
+    setTimeout(()=>{
+        console.log("1");
+        setTimeout(()=>{
+            console.log("2");
+            setTimeout(()=>{
+                console.log("3");
+                setTimeout(()=>{
+                    console.log("4");
+                    setTimeout(()=>{
+                        console.log("5");
+                        setTimeout(()=>{
+                            console.log("6");
+                            setTimeout(()=>{
+                                console.log("7");
+                                },7000)
+                            },6000)
+                        },5000)
+                    },4000)
+                },3000)
+            },2000)
+        },1000)
+
+        <b>output:- 1
+            2
+            3
+            4
+            5
+            6
+            7
+        </b>
+</pre>
+
+<pre>
+<b>3. Write the promise function to print numbers from 1 to 7, in which 1 should
+     be printed after 1 sec, 2 should be printed after 2 sec, 3 should be printed
+      after 3 sec, and so on. 
+
+Numbers
+1
+2
+3
+4
+5
+6
+7</b>
+</pre>
+<pre>
+    let promise = new Promise((resolve,reject)=>{
+        resolve();
+    });
+    promise.then(()=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("1");
+                resolve();
+            },1000)
+        })
+                
+    })
+    promise.then(()=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("2");
+                resolve();
+            },3000)
+        })
+                
+    })
+    promise.then(()=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("3");
+                resolve();
+            },6000)
+        })
+                
+    })
+    promise.then(()=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("4");
+                resolve();
+            },10000)
+        })
+                
+    })
+    promise.then(()=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("5");
+                resolve();
+            },15000)
+        })
+                
+    })
+    promise.then(()=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("6");
+                resolve();
+            },21000)
+        })
+                
+    })
+    promise.then(()=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log("7");
+                resolve();
+            },28000)
+        })
+                
+    })
+
+<b>output:- 1
+         2
+         3
+         4
+         5
+         6
+         7
+    </b>
+</pre>
+
+
+<b>4. Create a promise function accepting an argument, if yes is passed to the 
+    function then it should go to resolved state and print Promise Resolved, and 
+    if nothing is passed then it should go to reject the state and catch the error
+     and print Promise Rejected "</b>
+
+<pre>
+    const promiseFun = new Promise((resolve,reject)=>{
+        let count = 10;
+    
+        if(count === 10){
+            resolve("I'm success");
+        }
+        else{
+            reject("I'm reject")
+        }
+    })
+    
+    promiseFun.then((x)=>{
+        console.log(x);
+    })
+    promiseFun.catch((x)=>{
+        console.log(x);
+    })
+
+<b>output:- I'm success</b>
+</pre>
+
+<b>5. Create examples to explain callback function</b>
+<pre>
+    function outer(name,sum){
+        console.log(name,sum);
+    }
+        function callBack(a,b){
+            return a + b;
+        }
+        outer("hamsa",callBack(10,20));
+
+<b>output:- hamsa 30</b>
+</pre>
+
+<b>6. Create examples to explain callback hell function</b>
+<pre>
+    setTimeout(()=>{
+        console.log("1");
+        setTimeout(()=>{
+            console.log("2");
+            setTimeout(()=>{
+                console.log("3");
+                setTimeout(()=>{
+                    console.log("4");
+                    setTimeout(()=>{
+                        console.log("5");
+                        setTimeout(()=>{
+                            console.log("6");
+                            setTimeout(()=>{
+                                console.log("7");
+                                },7000)
+                            },6000)
+                        },5000)
+                    },4000)
+                },3000)
+            },2000)
+        },1000)
+
+ <b>output:- 1
+          2
+          3
+          4
+          5
+          6
+          7
+        </b>
+</pre>
+
+<b>7. Create examples to explain promises function</b>
+<pre>
+    let promise = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+     resolve("I'm successfull")
+        },1000)
+    })
+    
+    promise
+    .then((res)=>{
+        console.log(res);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+    .finally(()=>{
+        console.log("End of promise")
+    })
+
+    <b>output:-  I'm uccessfull
+             End of promise
+    </b>
+</pre>
+
+<b>8.Create examples to explain async await function </b>
+<pre>
+    async function element(){
+        const url = "https://jsonplaceholder.typicode.com/todos";
+        let result =  await fetch(url);
+        console.log(result);
+    }
+    
+    async function callBack(){
+       await element();
+       console.log("End of promise");
+    
+    }
+    callBack();
+
+    <b>output:- esponse {type: 'cors', url: 'https://jsonplaceholder.typicode.com/todos', redirected: false, status: 200, ok: true, …}
+             End of promise   
+    </b>
+
+</pre>
+
+<b>9. Create examples to explain promise.all function</b>
+<pre>
+
+</pre>
+</body>
+</html>
